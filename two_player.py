@@ -14,14 +14,3 @@ while True:
 
         break
     X_turn = not X_turn
-
-# 2 player
-# While true
-# 	Get user X input
-# 	Change board
-# 	check if game over
-# 	change to O
-# 	get user 2 input
-# 	check if game over
-# 	change to X
-# 	repeat
