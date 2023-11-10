@@ -30,15 +30,6 @@ class Test_Game_Board(unittest.TestCase):
         bottom_border = "-------------\n"
         self.assertEqual(view, top_border + row_1 + row_2 + row_3 + bottom_border)
 
- 
-
-
-# test display board (header to display tests)
-
-# test an empty board
-#test a board with X and O and make sure they are in correct spot when displayed
-
-#printed_board = "--------"
 
 if __name__ == '__main__':
     unittest.main()
