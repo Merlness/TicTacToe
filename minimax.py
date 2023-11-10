@@ -1,54 +1,70 @@
 import check_gameover as cg
 import user_input as ui
+import copy
 
-#minmax maxs for X mins for O
-def minimax(gamestate, isX):
-    if cg.check_if_game_over(gamestate):
-        return Value(gamestate, isX)
-    
+def minimax(gamestate, depth ,isX):
+    depth += 1
+
+    if cg.is_game_over(gamestate):
+        value = Value(gamestate)
+        return value / depth, None
+
     if isX :
-        value = -100000000
+        best_value = -100000000
         for action in cg.actions(gamestate):
-            value = max(value, minimax(result(gamestate, action, isX)))
-        return value
+            new_gamestate = copy.deepcopy(gamestate)
+
+            new_gamestate = ui.update_board(action, new_gamestate, isX)
+            value = minimax(new_gamestate, depth, not isX)[0]
+            if value > best_value:
+                best_value = value
+                best_action = action
+        return best_value, best_action
     
     else:
-        value = 100000000
+        best_value = 100000000
         for action in cg.actions(gamestate):
-            value = min(value, minimax(result(gamestate, action, isX)))
-        return value
+            new_gamestate = copy.deepcopy(gamestate)
+            new_gamestate = ui.update_board(action, new_gamestate, isX)
+            value = minimax(new_gamestate, depth, not isX)[0]
+            if value < best_value:
+                best_value = value
+                best_action = action
+        return best_value, best_action
 
 
-def Value(gamestate, isX):
-    X_wins = False
-    O_wins = False
+def Value(gamestate):
+    X_won = False
+    O_Won = False
     Tie = False
 
-    if cg.check_if_game_over(gamestate) == "Congrats X wins!":
-        X_wins = True
-    elif cg.check_if_game_over(gamestate) == "Congrats O wins!":
-        O_wins = True
-    elif cg.check_if_game_over(gamestate) == 'Tie!':
+    if X_wins(gamestate):
+        X_won = True
+    elif O_wins(gamestate):
+        O_Won = True
+    elif is_Tie(gamestate):
         Tie = True
 
-    if X_wins and isX:
-            return 1
-    if X_wins and not isX:
-        return -1
-    if O_wins and isX:
-        return -1
-    if O_wins and not isX:
-        return 1
+    if X_won:
+        return 12
+    if O_Won:
+        return -12    
     if Tie:
         return 0
 
-#similar to update board
-def result(gamestate, action, isX):
-    new_gamestate = gamestate.copy()
-    num = int(action)
+def X_wins(gamestate):
+    if 'X' in (cg.row_win(gamestate), cg.column_win(gamestate), 
+               cg.diagonal_win(gamestate)):
+        return True
+    return False
 
-    for row in new_gamestate:
-        if num  in row:
-            row[row.index(num)] = ui.change_XO(isX)
-            isX = not isX
-            return new_gamestate, isX
+def O_wins(gamestate):
+    if 'O' in (cg.row_win(gamestate), cg.column_win(gamestate), 
+               cg.diagonal_win(gamestate)):
+        return True
+    return False
+
+def is_Tie(gamestate):
+    if cg.is_tie(gamestate):
+        return True
+    return False

@@ -1,24 +1,32 @@
+import check_gameover as cg
 
-def parse_input(numbers, isX):
+def parse_input(gbaord, isX):
     while True:
-        position = input("Enter your next move: ")
-        num = update_board(position, numbers, isX)
-        if num:
-            return num
+        position = get_position(gbaord)
+        board = update_board(position, gbaord, isX)
+        if board:
+            return board
 
-
-def update_board(position, numbers, isX):
+def update_board(position, board, isX):
     num = int(position)
 
-    for row in numbers:
+    for row in board:
         if num  in row:
             row[row.index(num)] = change_XO(isX)
-            isX = not isX
-            return numbers
-
+    return board
 
 def change_XO(isX):
     if isX == True:
         return 'X'
     else:
         return 'O'
+    
+def get_position(board):
+    position = input("Enter your next move: ")
+    numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+    available_options = cg.actions(board)
+    
+    if position in numbers and int(position) in available_options:
+        return position
+    
+    return get_position(board)

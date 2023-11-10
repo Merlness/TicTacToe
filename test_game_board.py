@@ -2,7 +2,6 @@ import unittest
 import game_board as sut
 
 #python3 -m unittest 
-
 class Test_Game_Board(unittest.TestCase):
     board = [[1, 2, 3], ['X', 'O', 6], [7, 8, 9]]
 

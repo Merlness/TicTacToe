@@ -2,7 +2,6 @@ import unittest
 import check_gameover as sut
 
 class Test_user_input(unittest.TestCase):
-    #pass
     def test_first_rowX(self):
         first_row_X = [['X', 'X', 'X'], [4, 5, 6], [7, 8, 9]]
         check_game = sut.row_win(first_row_X)
@@ -39,7 +38,7 @@ class Test_user_input(unittest.TestCase):
         back_diag_O = [ [1, 2, 'O'],
                        [4, 'O', 6], 
                        ['O', 'X', 'X']]
-        check_game = sut.check_if_game_over(back_diag_O)
+        check_game = sut.display_end_result(back_diag_O)
         self.assertEqual(check_game, "Congrats O wins!")
 
     def test_tie(self):
@@ -62,4 +61,4 @@ class Test_user_input(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
+    
