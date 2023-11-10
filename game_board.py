@@ -1,4 +1,3 @@
-
 def display_Game(gboard):
     grid = "-------------\n"
 
