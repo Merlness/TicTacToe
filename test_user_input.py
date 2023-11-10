@@ -1,9 +1,6 @@
 import unittest
 import user_input as sut
 
-
-
-
 class Test_user_input(unittest.TestCase):
     def test_user_input(self):
         before_numbers = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -16,8 +13,6 @@ class Test_user_input(unittest.TestCase):
         after_numbers = [[1, 2, 3], [4, 'X', 6], [7, 8, 'O']]
         changed_board = sut.update_board(9, before_numbers, False)
         self.assertEqual(changed_board, after_numbers)
-
-
 
 if __name__ == '__main__':
     unittest.main()
