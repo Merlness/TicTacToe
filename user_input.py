@@ -7,19 +7,6 @@ def parse_input(gbaord, isX):
         if board:
             return board
 
-def update_board(position, board, isX):
-    num = int(position)
-
-    for row in board:
-        if num  in row:
-            row[row.index(num)] = change_XO(isX)
-    return board
-
-def change_XO(isX):
-    if isX == True:
-        return 'X'
-    else:
-        return 'O'
     
 def get_position(board):
     position = input("Enter your next move: ")
@@ -30,3 +17,5 @@ def get_position(board):
         return position
     
     return get_position(board)
+
+

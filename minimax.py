@@ -2,6 +2,16 @@ import check_gameover as cg
 import user_input as ui
 import copy
 
+class Minimax:
+    def __init__(self, depth):
+        pass
+
+    def maximize(self, board):
+        pass
+
+    def minimize():
+        pass
+
 def minimax(gamestate, depth ,isX):
     depth += 1
 

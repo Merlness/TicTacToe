@@ -3,6 +3,7 @@ import game_board as gb
 import check_gameover as cgo
 import minimax as mm
 
+
 def play_computer(game_board, number_of_moves, X_turn):
     while True:
         print(gb.display_Game(game_board))
