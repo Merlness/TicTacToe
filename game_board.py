@@ -1,31 +1,15 @@
-class Game_board:
-    def __init__(self):
-        self.board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] 
-        self.is_X_turn = True
+import copy
 
-    def add(x, y):
-        return x + y
+class GameBoard:
+    def __init__(self, board = None, is_X_turn = True):
+        self.is_X_turn = is_X_turn
 
-    def display(self):
-        grid = "-------------\n"
+        if board:
+            #self.board = copy.deepcopy(board)
+            self.board = board
+        else:
+            self.board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
-        for row in self.board:
-            for space in row:
-                if isinstance(space, int):
-                    grid += f"| {space} "
-                else:
-                    grid += self.place_XO(space)
-
-            grid += "|\n" + "-------------\n"
-
-        return grid
-
-    def place_XO(self, space):
-        if space == 'X':
-            return "| \033[31mX\033[0m "
-        if space == 'O':
-            return "| \033[34mO\033[0m "
-        
     def update_board(self, position):
         num = int(position)
 
@@ -33,7 +17,7 @@ class Game_board:
             if num  in row:
                 row[row.index(num)] = self.change_XO()
         #change after you move "change_turn"
-        self.change_turn()
+        #self.change_turn()
 
         return self.board
 
@@ -42,9 +26,13 @@ class Game_board:
             return 'X'
         else:
             return 'O'
-    #place elsewhere    
-    def change_turn(self):
-        self.is_X_turn = not self.is_X_turn
+ #place elsewhere    
+    # def change_turn(self):
+    #     self.is_X_turn = not self.is_X_turn
+
+    def make_copy(self):
+        # return GameBoard(self.board, self.is_X_turn)
+        return GameBoard(copy.deepcopy(self.board), self.is_X_turn)
 
     def row_win(self):
         for row in self.board:
@@ -73,10 +61,8 @@ class Game_board:
         return None
 
     def is_tie(self):
-        if self.actions():
-            return False
-        return True
-    
+        return not self.actions()
+        
     def actions(self):
         possibilities = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         actions = []
@@ -87,9 +73,7 @@ class Game_board:
         return actions
     
     def is_game_over(self):
-        if self.find_winning_letter() != False or self.is_tie():
-            return True
-        return False
+        return (self.find_winning_letter() != False or self.is_tie())
 
     def find_winning_letter(self):   
         row_winner = self.row_win()
@@ -105,42 +89,3 @@ class Game_board:
             return diagonal_winner
 
         return False
-
-# board =  Game_board()
-# print(board.display())
-# board.update_board(5)
-# board.update_board(6)
-# board.update_board(7)
-
-
-# print(board.display())
-
-
-
-
-## have the winning letter don't call every type of win
-
-
-
-
-
-
-#place elsewhere
-# def display_end_result(board):   
-#     row_winner = row_win(board)
-#     if row_winner:
-#         return f"Congrats {row_win(board)} wins!"
-
-#     column_winner = column_win(board)
-#     if column_winner:
-#         return f"Congrats {column_winner} wins!"
-
-#     diagonal_winner = diagonal_win(board)
-#     if diagonal_winner:
-#         return f"Congrats {diagonal_winner} wins!"
-
-#     if is_tie(board):
-#         return 'Tie!'
-
-#     return False
-

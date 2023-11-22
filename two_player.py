@@ -1,16 +1,20 @@
 import user_input as ui
 import game_board as gb
-import check_gameover as go
+import console_user_interface as cui
+import helper as help
 
-game_board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-X_turn = True
+
+board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+game_board = gb.GameBoard(board)
+interface_display = cui.ConsoleUserInterface()
 
 while True:
-    print(gb.display_Game(game_board))
-    game_board = ui.update_board(game_board, X_turn)
-    if go.check_if_game_over(game_board):
-        print(gb.display_Game(game_board))
-        print(go.check_if_game_over(game_board))
+    print(interface_display.display(game_board.board))
+    game_board = game_board.update_board(game_board)
+    if game_board.is_game_over():
+        print(interface_display.display(game_board.board))
+        print(help.Helper.display_end_result())
 
         break
     X_turn = not X_turn
+
