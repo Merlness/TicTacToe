@@ -1,7 +1,3 @@
-# rows = board.get_rows() => [[1, 2, 3], ['x', 'o', 6], ['x', 'o', 'x']]
-# ui.present(rows) => print(xs and os to console)
-
-#console ui  display and XO
 class ConsoleUserInterface:
 
     def display(self, board):

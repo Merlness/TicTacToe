@@ -1,29 +1,16 @@
 import game_board as gb
 
 class Helper:
-    def __init__(self):
-        pass
-        # self.is_X_turn = is_X
+    def __init__(self, board):
+        self.board = board
 
     def display_end_result(self):   
-        game_board = gb.GameBoard()
+        game_board = gb.GameBoard(self.board)
         
         if game_board.find_winning_letter():
             return f"Congrats {game_board.find_winning_letter()} wins!"
 
-        # row_winner = row_win(board)
-        # if row_winner:
-        #     return f"Congrats {row_win(board)} wins!"
-
-        # column_winner = column_win(board)
-        # if column_winner:
-        #     return f"Congrats {column_winner} wins!"
-
-        # diagonal_winner = diagonal_win(board)
-        # if diagonal_winner:
-        #     return f"Congrats {diagonal_winner} wins!"
-
-        elif gb.GameBoard.is_tie():
+        elif game_board.is_tie():
             return 'Tie!'
 
     
@@ -40,6 +27,4 @@ class Helper:
 
 #  def change_turn(self):
 #         self.is_X_turn = not self.is_X_turn
-
-#place elsewhere
 

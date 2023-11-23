@@ -139,9 +139,7 @@ class Test_board_endgame(unittest.TestCase):
         gameboard = sut.GameBoard(board)
         check_game = gameboard.find_winning_letter()
         self.assertEqual(check_game, 'X')
-    #make a test of make_copy()
-    #to be clear it does not modify previous object(board)
-
+  
 
 if __name__ == '__main__':
     unittest.main()

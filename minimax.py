@@ -6,9 +6,11 @@ class Minimax:
     def __init__(self):
        pass
 
-    def maximize(self, game_board = gb.GameBoard(), depth = 0):
+    def maximize(self, game_board = None, depth = 0):
         depth += 1
-
+        
+        if not game_board :
+            game_board =  gb.GameBoard()
         if game_board.is_game_over():
             value = self.Value(game_board)
             return value / depth, None
@@ -25,8 +27,11 @@ class Minimax:
                 best_action = action
         return best_value, best_action
 
-    def minimize(self, game_board = gb.GameBoard(), depth = 0):
+    def minimize(self, game_board = None, depth = 0):
         depth += 1
+        if not game_board :
+            game_board =  gb.GameBoard()
+
         if game_board.is_game_over():
             value = self.Value(game_board)
             return value / depth, None

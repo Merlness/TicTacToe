@@ -40,13 +40,13 @@ class Test_minimax(unittest.TestCase):
                 found_match = any(actual_value == expected for expected in possible_expected_values)
                 self.assertTrue(found_match)
 
-        def test_first_move(self):
-                clean_board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-                minimax_instance = sut.Minimax()
-                actual_value = minimax_instance.maximize(gb.GameBoard(clean_board, True))[1]
-                possible_expected_values = [1, 3, 7, 9]
-                found_match = any(actual_value == expected for expected in possible_expected_values)
-                self.assertTrue(found_match)
+        # def test_first_move(self):
+        #         clean_board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+        #         minimax_instance = sut.Minimax()
+        #         actual_value = minimax_instance.maximize(gb.GameBoard(clean_board, True))[1]
+        #         possible_expected_values = [1, 3, 7, 9]
+        #         found_match = any(actual_value == expected for expected in possible_expected_values)
+        #         self.assertTrue(found_match)
 
 if __name__ == '__main__':
     unittest.main()

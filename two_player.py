@@ -10,11 +10,22 @@ interface_display = cui.ConsoleUserInterface()
 
 while True:
     print(interface_display.display(game_board.board))
-    game_board = game_board.update_board(game_board)
+    game_board.board = ui.parse_input( game_board.board, game_board.is_X_turn)
+
     if game_board.is_game_over():
         print(interface_display.display(game_board.board))
-        print(help.Helper.display_end_result())
+        end_board = help.Helper(board)
+        print(end_board.display_end_result())
 
         break
-    X_turn = not X_turn
+    game_board.is_X_turn = not game_board.is_X_turn
 
+# def play_two_people(game_board, X_turn):
+#     while True:
+#         print(gb.display_Game(game_board))
+#         game_board = ui.parse_input(game_board, X_turn)
+
+#         if cgo.is_game_over(game_board):
+#             c.congrats_message(game_board)
+#             break
+#         X_turn = not X_turn
