@@ -16,9 +16,7 @@ class GameBoard:
         for row in self.board:
             if num  in row:
                 row[row.index(num)] = self.change_XO()
-        #change after you move "change_turn"
-        #self.change_turn()
-
+      
         return self.board
 
     def change_XO(self):
@@ -26,12 +24,8 @@ class GameBoard:
             return 'X'
         else:
             return 'O'
- #place elsewhere    
-    # def change_turn(self):
-    #     self.is_X_turn = not self.is_X_turn
 
     def make_copy(self):
-        # return GameBoard(self.board, self.is_X_turn)
         return GameBoard(copy.deepcopy(self.board), self.is_X_turn)
 
     def row_win(self):
