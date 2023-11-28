@@ -4,6 +4,7 @@ class UserInput:
         self.position = None
         self.board = board
         self.isX = isX
+        
     def change_XO(self):
         if self.isX == True:
             return 'X'
