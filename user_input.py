@@ -7,7 +7,7 @@ class UserInput:
         self.board = board
         self.is_x = is_x
 
-    def change_XO(self):
+    def change_xo(self):
         if self.is_x:
             return 'X'
         else:
@@ -37,21 +37,6 @@ class UserInput:
 
         for row in self.board:
             if num in row:
-                row[row.index(num)] = self.change_XO()
+                row[row.index(num)] = self.change_xo()
 
         return self.board
-
-# get a position from board based on token
-#  - AI
-#  - Human
-
-# class AI:
-#     def __init__(self, isX):
-#         algo = minimax()
-
-#     def get_position(board):
-#         minimax.maximize(board)
-
-# class Human:
-#     def get_position(board):
-#         pass

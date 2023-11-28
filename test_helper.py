@@ -1,8 +1,8 @@
 import unittest
 import game_board as sut
 import helper as help
-
 #python3 -m unittest 
+
 
 class TestHelper(unittest.TestCase):
     
@@ -39,9 +39,6 @@ class TestHelper(unittest.TestCase):
         helper = help.Helper(board)
         check_game = helper.display_end_result()
         self.assertEqual(check_game, "\x1b[35mTie!\x1b[0m")
-    
-    
-
 
 
 if __name__ == '__main__':

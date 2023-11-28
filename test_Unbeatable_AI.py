@@ -2,7 +2,7 @@ import io
 import unittest
 from unittest.mock import patch
 import computer as cf
-#import TTT_Unbeatable_AI as TTT
+#import unbeatable_ai as TTT
 
     
 class MainTest(unittest.TestCase):

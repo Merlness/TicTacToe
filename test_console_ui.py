@@ -2,7 +2,7 @@ import unittest
 import console_user_interface as sut
 
 
-class Test_Game_Board(unittest.TestCase):
+class TestGameBoard(unittest.TestCase):
     board = [[1, 2, 3], ['X', 'O', 6], [7, 8, 9]]
 
     def test_prints_numbers(self):

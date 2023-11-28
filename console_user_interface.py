@@ -8,13 +8,13 @@ class ConsoleUserInterface:
                 if isinstance(space, int):
                     grid += f"| {space} "
                 else:
-                    grid += self.place_XO(space)
+                    grid += self.place_xo(space)
 
             grid += "|\n" + "-------------\n"
 
         return grid
 
-    def place_XO(self, space):
+    def place_xo(self, space):
         if space == 'X':
             return "| \033[31mX\033[0m "
         if space == 'O':

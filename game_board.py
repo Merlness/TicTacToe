@@ -15,11 +15,11 @@ class GameBoard:
 
         for row in self.board:
             if num in row:
-                row[row.index(num)] = self.change_XO()
+                row[row.index(num)] = self.change_xo()
       
         return self.board
 
-    def change_XO(self):
+    def change_xo(self):
         if self.is_x_turn:
             return 'X'
         else:

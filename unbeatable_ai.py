@@ -3,7 +3,6 @@ import computer as comp
 
 class AI:
     def __init__(self):
-        pass
         self.X_turn = True
 
     def get_user_turn(self):
@@ -15,10 +14,3 @@ class AI:
                 return self.X_turn
             elif user == '2':
                 return self.X_turn
-
-
-if __name__ == "__main__":
-    start_game = AI()
-    X_turn = start_game.get_user_turn()
-    game_instance = comp.Computer(None, X_turn)
-    game_instance.play_game()

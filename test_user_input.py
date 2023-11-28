@@ -2,12 +2,13 @@ import unittest
 import user_input as sut
 import game_board as gb
 
-class Test_user_input(unittest.TestCase):
+
+class TestUserInput(unittest.TestCase):
     def test_user_input(self):
         after_numbers = [[1, 2, 3], [4, 'X', 6], [7, 8, 9]]
         board = gb.GameBoard()
-        checkinput = board.update_board(5)
-        self.assertEqual(checkinput, after_numbers)
+        check_input = board.update_board(5)
+        self.assertEqual(check_input, after_numbers)
 
     # def test_change_XO(self):
     #     after_numbers = [[1, 2, 3], [4, 'X', 6], [7, 8, 'O']]

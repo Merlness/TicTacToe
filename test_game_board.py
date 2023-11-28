@@ -1,9 +1,9 @@
 import unittest
 import game_board as sut
+#python3 -m unittest
 
-#python3 -m unittest 
 
-class Test_board_endgame(unittest.TestCase):
+class TestBoardEndgame(unittest.TestCase):
     def test_first_rowX(self):
         board = [['X', 'X', 'X'], 
                  [4, 5, 6], 
