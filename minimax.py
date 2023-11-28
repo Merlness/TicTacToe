@@ -8,12 +8,14 @@ class Minimax:
 
     def maximize(self, game_board = None, depth = 0):
         depth += 1
-        
+
         if not game_board :
             game_board =  gb.GameBoard()
         if game_board.is_game_over():
-            value = self.Value(game_board)
+            value = self.value(game_board)
             return value / depth, None
+        if game_board.board == [[1, 2, 3], [4, 5, 6], [7, 8, 9]]:
+            return 1000, 1
         
         best_value = -100000000
         for action in game_board.actions():
@@ -33,7 +35,7 @@ class Minimax:
             game_board =  gb.GameBoard()
 
         if game_board.is_game_over():
-            value = self.Value(game_board)
+            value = self.value(game_board)
             return value / depth, None
         
         best_value = 100000000
@@ -48,12 +50,12 @@ class Minimax:
                 best_action = action
         return best_value, best_action
 
-    def Value(self, game_board):
+    def value(self, game_board):
         if self.X_wins(game_board):
             return 12
         elif self.O_wins(game_board):
             return -12
-        elif self.is_Tie(game_board):
+        elif self.is_tie(game_board):
             return 0
 
     def X_wins(self, game_board):
@@ -66,77 +68,6 @@ class Minimax:
                        game_board.column_win(), 
                        game_board.diagonal_win())
 
-    def is_Tie(self, game_board):
+    def is_tie(self, game_board):
         return game_board.is_tie()
       
-
-
-
-
-
-# def minimax(board, depth ,isX):
-#     depth += 1
-
-#     if gb.GameBoard.is_game_over(board):
-#         value = Value(board)
-#         return value / depth, None
-
-#     if isX :
-#         best_value = -100000000
-#         for action in gb.GameBoard.actions(board):
-#             new_board = copy.deepcopy(board)
-
-#             new_board = ui.update_board(action, new_board, isX)
-#             value = minimax(new_board, depth, not isX)[0]
-#             if value > best_value:
-#                 best_value = value
-#                 best_action = action
-#         return best_value, best_action
-    
-#     else:
-#         best_value = 100000000
-#         for action in gb.GameBoard.actions(board):
-#             new_board = copy.deepcopy(board)
-#             new_board = ui.update_board(action, new_board, isX)
-#             value = minimax(new_board, depth, not isX)[0]
-#             if value < best_value:
-#                 best_value = value
-#                 best_action = action
-#         return best_value, best_action
-
-
-# def Value(board):
-#     X_won = False
-#     O_Won = False
-#     Tie = False
-
-#     if X_wins(board):
-#         X_won = True
-#     elif O_wins(board):
-#         O_Won = True
-#     elif is_Tie(board):
-#         Tie = True
-
-#     if X_won:
-#         return 12
-#     if O_Won:
-#         return -12    
-#     if Tie:
-#         return 0
-
-# def X_wins(board):
-#     if 'X' in (gb.GameBoard.row_win(board), gb.GameBoard.column_win(board), 
-#                gb.GameBoard.diagonal_win(board)):
-#         return True
-#     return False
-
-# def O_wins(board):
-#     if 'O' in (gb.GameBoard.row_win(board), gb.GameBoard.column_win(board), 
-#                gb.GameBoard.diagonal_win(board)):
-#         return True
-#     return False
-
-# def is_Tie(board):
-#     if gb.GameBoard.is_tie(board):
-#         return True
-#     return False

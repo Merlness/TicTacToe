@@ -10,8 +10,9 @@ is_X_turn = True
 def play_two_people(game_board, X_turn):
     while True:
         print(cui.ConsoleUserInterface.display(game_board))
-        game_board = ui.parse_input(game_board, X_turn)
-       
+        user_input = ui.UserInput(game_board, X_turn)
+        game_board = user_input. parse_input()
+
         if cgo.is_game_over(game_board):
             c.congrats_message(game_board)
             break
