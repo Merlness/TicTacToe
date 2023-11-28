@@ -1,12 +1,14 @@
 import game_board as gb
+
+
 class UserInput:
-    def __init__(self, board, isX):
+    def __init__(self, board, is_x):
         self.position = None
         self.board = board
-        self.isX = isX
-        
+        self.is_x = is_x
+
     def change_XO(self):
-        if self.isX == True:
+        if self.is_x:
             return 'X'
         else:
             return 'O'
@@ -21,6 +23,7 @@ class UserInput:
             return position
 
         return self.get_position()
+
     def parse_input(self):
         while True:
             position = self.get_position()
@@ -52,4 +55,3 @@ class UserInput:
 # class Human:
 #     def get_position(board):
 #         pass
-

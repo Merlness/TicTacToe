@@ -3,9 +3,10 @@ import game_board as gb
 import console_user_interface as cui
 import helper as help
 
+
 class TwoPlayer:
-    def __init__(self, initial_board):
-        self.game_board = gb.GameBoard(initial_board)
+    def __init__(self):
+        self.game_board = gb.GameBoard()
         self.interface_display = cui.ConsoleUserInterface()
 
     def play_game(self):
@@ -22,8 +23,8 @@ class TwoPlayer:
 
             self.game_board.is_X_turn = not self.game_board.is_X_turn
 
+
 if __name__ == "__main__":
-    initial_board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-    game_instance = TwoPlayer(initial_board)
+    game_instance = TwoPlayer()
     game_instance.play_game()
 

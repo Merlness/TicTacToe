@@ -1,20 +1,24 @@
-import computer as cf
-
-game_board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-number_of_moves= 0
-X_turn = True
-
-def get_user_turn():
-    User = input("Would you like to go first, or second? Please Enter 1 or 2: ")
-    while True:
-        if User == '1':
-            return True
-        elif User == '2':
-           return False
-
-if get_user_turn():
-    X_turn = False
+import computer as comp
 
 
-cf.play_computer(game_board, number_of_moves, X_turn)
+class AI:
+    def __init__(self):
+        pass
+        self.X_turn = True
 
+    def get_user_turn(self):
+        user = input("Would you like to go first, or second? Please Enter 1 or 2: ")
+
+        while True:
+            if user == '1':
+                self.X_turn = False
+                return self.X_turn
+            elif user == '2':
+                return self.X_turn
+
+
+if __name__ == "__main__":
+    start_game = AI()
+    X_turn = start_game.get_user_turn()
+    game_instance = comp.Computer(None, X_turn)
+    game_instance.play_game()

@@ -7,6 +7,9 @@ import computer as c
 board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 is_X_turn = True
 
+class TwoPlayerGame:
+
+
 def play_two_people(game_board, X_turn):
     while True:
         print(cui.ConsoleUserInterface.display(game_board))

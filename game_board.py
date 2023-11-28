@@ -1,11 +1,11 @@
 import copy
 
+
 class GameBoard:
-    def __init__(self, board = None, is_X_turn = True):
-        self.is_X_turn = is_X_turn
+    def __init__(self, board = None, is_x_turn = True):
+        self.is_x_turn = is_x_turn
 
         if board:
-            #self.board = copy.deepcopy(board)
             self.board = board
         else:
             self.board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -14,19 +14,19 @@ class GameBoard:
         num = int(position)
 
         for row in self.board:
-            if num  in row:
+            if num in row:
                 row[row.index(num)] = self.change_XO()
       
         return self.board
 
     def change_XO(self):
-        if self.is_X_turn == True:
+        if self.is_x_turn:
             return 'X'
         else:
             return 'O'
 
     def make_copy(self):
-        return GameBoard(copy.deepcopy(self.board), self.is_X_turn)
+        return GameBoard(copy.deepcopy(self.board), self.is_x_turn)
 
     def row_win(self):
         for row in self.board:
@@ -42,7 +42,7 @@ class GameBoard:
         for index in range(3):
             letter = board[0][index]
 
-            if board[0][index] ==  board[1][index] ==  board[2][index]:
+            if board[0][index] == board[1][index] == board[2][index]:
                 return letter
         return None
 
@@ -67,7 +67,7 @@ class GameBoard:
         return actions
     
     def is_game_over(self):
-        return (self.find_winning_letter() != False or self.is_tie())
+        return self.find_winning_letter() != False or self.is_tie()
 
     def find_winning_letter(self):   
         row_winner = self.row_win()
